@@ -5,13 +5,13 @@ class Node {
   }
 }
 
-class LinkedList {
+class Stack {
   constructor() {
     this.head = null;
   }
 
-  addToHead(value) {
-    const newNode = new Node(value);
+  push(number) {
+    const newNode = new Node(number);
 
     if (!this.head) {
       this.head = newNode;
@@ -21,7 +21,7 @@ class LinkedList {
     }
   }
 
-  removeFromHead() {
+  pop() {
     if (!this.head) {
       return null;
     }
@@ -29,20 +29,6 @@ class LinkedList {
     const value = this.head.value;
     this.head = this.head.next;
     return value;
-  }
-}
-
-class Stack {
-  constructor() {
-    this.linkedList = new LinkedList();
-  }
-
-  push(number) {
-    this.linkedList.addToHead(number);
-  }
-
-  pop() {
-    return this.linkedList.removeFromHead();
   }
 }
 
@@ -65,3 +51,4 @@ console.log(stack.pop());
 // Output: 3
 
 module.exports = Stack;
+

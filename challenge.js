@@ -1,30 +1,54 @@
-// Optionally: start with your code from LinkedList challenge.
-
-class Stack {
-  push(number) {
-    // your code here
-  }
-  
-  pop() {
-    // your code here
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
   }
 }
 
-const stack = new Stack()
-stack.push(3)
-stack.push(5)
-console.log(stack.pop())
-// => 5
+class Stack {
+  constructor() {
+    this.head = null;
+  }
 
-stack.push(2)
-stack.push(7)
-console.log(stack.pop())
-// => 7
+  push(number) {
+    const newNode = new Node(number);
 
-console.log(stack.pop())
-// => 2
+    if (!this.head) {
+      this.head = newNode;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+  }
 
-console.log(stack.pop())
-// => 3
+  pop() {
+    if (!this.head) {
+      return null;
+    }
 
-module.exports = Stack
+    const value = this.head.value;
+    this.head = this.head.next;
+    return value;
+  }
+}
+
+const stack = new Stack();
+
+stack.push(3);
+stack.push(5);
+console.log(stack.pop());
+// Output: 5
+
+stack.push(2);
+stack.push(7);
+console.log(stack.pop());
+// Output: 7
+
+console.log(stack.pop());
+// Output: 2
+
+console.log(stack.pop());
+// Output: 3
+
+module.exports = Stack;
+
